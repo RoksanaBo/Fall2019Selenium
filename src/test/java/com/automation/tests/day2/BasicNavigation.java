@@ -43,7 +43,8 @@ public class BasicNavigation {
         }
 
 
-        driver.navigate().to("httm://amazon.com");
+        driver.navigate().to("http://amazon.com");
+        Thread.sleep(3000); // for demo,wait 3 seconds
 
         if(driver.getTitle().toLowerCase().contains("amazon")){
             System.out.println("test passed");
@@ -52,11 +53,27 @@ public class BasicNavigation {
         }
 
 
+        driver.navigate().back();
+        Thread.sleep(3000); // for demo,wait 3 seconds
+
+        verifyEquals(driver.getTitle(),"Google");
+
+        driver.navigate().forward();
+        Thread.sleep(3000); // for demo,wait 3 seconds
+        System.out.println("Title: " + driver.getTitle());
+        System.out.println("URL: " + driver.getCurrentUrl());
+
+
+
+   //     driver.navigate().refresh(); // to reload page
+   //     Thread.sleep(3000);
+
         //this must be at the end
         driver.close(); // to close browser
 
         // browser cannot close itself
     }
+
 
     public static void verifyEquals(String arg1, String arg2){
         if(arg1.equals(arg2)){
@@ -65,4 +82,6 @@ public class BasicNavigation {
             System.out.println("test failed");
         }
     }
+
+
 }
