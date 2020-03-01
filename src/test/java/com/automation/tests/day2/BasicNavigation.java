@@ -23,6 +23,10 @@ public class BasicNavigation {
 
         driver.get("http://google.com"); // to open website
 
+        driver.manage().window().maximize(); // maximize the google screen
+
+        driver.manage().window().fullscreen();
+
         Thread.sleep(3000); // for demo,wait 3 seconds
 
         String title = driver.getTitle(); // returns<title>Some title</title>text
@@ -39,15 +43,26 @@ public class BasicNavigation {
         }
 
 
+        driver.navigate().to("httm://amazon.com");
+
+        if(driver.getTitle().toLowerCase().contains("amazon")){
+            System.out.println("test passed");
+        }else{
+            System.out.println("test failed");
+        }
+
+
         //this must be at the end
         driver.close(); // to close browser
 
         // browser cannot close itself
+    }
 
-
-
-
-
-
+    public static void verifyEquals(String arg1, String arg2){
+        if(arg1.equals(arg2)){
+            System.out.println("test passed");
+        }else{
+            System.out.println("test failed");
+        }
     }
 }
